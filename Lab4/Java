@@ -1,1 +1,4 @@
+Utilized a simple Level Order Traversal to determine whether invertTree actually inverts the tree.
+levelOrderTraversal() utilizes two different helper methods to print the tree -- getHeight() and printCurrentLevel()
 
+The code for these methods were obtained from geeksforgeeks.org
