@@ -1,1 +1,5 @@
-Creating a 
+The goal of this lab is to invert a tree by flipping the children.
+
+The algorithm designed uses a temporary variable to hold a pointer to one of the children, insert a temporary node
+to hold those children, and then allow the parent to complete the swap. The reason why we can do this is because
+when a parent swaps its children, the swapped children bring their subtrees.
