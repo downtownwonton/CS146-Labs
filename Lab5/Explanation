@@ -1,0 +1,26 @@
+The goal of this lab was to determine whether a BST was valid or not. The problem was simplified to being the condition
+that the left subtree must be less than the root value, and the right subtree must be greater than the root value.
+
+A helper method was created in order to complete the solution, as the original method only takes a node as an argument, but
+the helper function also takes in two integer values.
+
+The base cases were taken care of first. If the node being compared is null, then that implies that the recursion reached
+leaf nodes, and that there were no issues traversing the tree. Otherwise, if there are obvious violations to BST properties
+(if the node value is greater than the node's value on the right side or less than the node's value on the left side), then
+the algorithm immediately returns false.
+
+Otherwise, the method would recurse for left and right subtrees. 
+The difficult part of finding a solution was figuring out how to handle the case that, if a node is on the right side in
+the left subtree, how would I make sure that the node's value is less than the root node, but greater than its parent node 
+(The issue is symmetric, but flipped on the right side)?
+
+The method in keeping track of the bounds for nodes in the tree is by keeping track of a minimum and maximum value. In the case of the above,
+a helper method kept track of the maximum value of integers and the minimum value of integers and the initial call utilizes those values.
+Afterwards, recursion is called twice:
+
+In the case of shifting to the left subtree, we want to ensure that we catch any node value in the left subtree that is greater than the
+root value so that we can return false for validation. This is done by changing the max value in the recursion call to be the original 
+root value. 
+
+In the case of shifting to the right subtree, the minimum value in the recursion is replaced with the root value, so that all values on the
+right side do not go lower than the root node.
