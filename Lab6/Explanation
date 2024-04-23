@@ -1,1 +1,14 @@
-Do something
+The goal of this lab is to determine whether or not a cycle is detected in prerequisites, which is the edge set
+denoting whether a class can be taken or not if there exists a prerequisite. A class cannot be taken if there exists
+a cycle because there is no entry-way.
+
+In order to tackle this problem, I used Kahn's algorithm to determine whether a class can be taken or not. Kahn's algorithm
+works by taking all nodes that have an in-degree of 0 and add them to a queue. For all vertices in the queue, that vertex is removed
+and the neighbors are looked at. By removing the vertedx in the queue, the neighbor's in-degree is decremented by 1. If that in-degree
+is 0, then that vertex gets added to the queue.
+
+This algorithm had to be modified in a way such that we returned true or false values. Here, I had to create a counter variable to
+keep track of the queue's size. If the number of vertices added to the queue matched the number of courses, as per the paramater numCourse
+then the method returns true.
+
+
