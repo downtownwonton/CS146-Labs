@@ -1,0 +1,31 @@
+The goal of this problem is to return the smallest number of coins required to meet a target amount.
+
+The way to go about this is to use tabulation by making an array that enumerates to the target amount and then filling
+each index with the minimum number of coins needed to make that total. For example, total[0] = 0 because it requires 0
+coins to create that value. The rest of the array is filled with Integer.MAX_VALUE because we need to find the minimum
+for each entry. If an entry contains MAX_VALUE, then there is no solution and the method will return -1 if that amount is asked.
+
+Using a nested for loop, we determine if a coin denomination is greater than the total being examined:
+i >= coin, coin is in the array of coins and i is the total counter for the total arrayensures that the 
+denomination being compared is less than i. If the coin value is greater than i, that means that the coin 
+value is too large for i and is skipped over. We also check to see if the difference i - coin contains an entry
+in the array.
+
+After the two conditions are met, then the minimum between the current value for total[i] and total[i - coin] + 1
+is checked. Total[i - coin] + 1 checks the tabulated entry for the difference and checks if the current value of 
+total[i] < total[i - coin] + 1.
+
+For example: We need to find total[9] given an array {2, 3, 5, 7}:
+Check if 9 >= 2 and if 9 - 2 != MAX_VALUE.
+In this case, total[9 - 2] = total[7] = 1, so both checks pass.
+Now, compare the current minimum for total[9] with total[7]. Since 2 is the first coin to be checked,
+total[9] currently holds MAX_VALUE.
+So, total[9] = min(MAX_VALUE, 1). Since 1 < MAX_VALUE, total[9] = 1.
+
+This check is done for all entries in coin for total[i], and will ensure the minimum number of coins is updated.
+
+Requiring this check makes the algorithm O(n * m) time complexity, where n is the size of the total amount array 
+and m is the size of the coin array. The space complexity is O(n) since it requires an array size of n = amount + 1
+to be initialized.
+
+
